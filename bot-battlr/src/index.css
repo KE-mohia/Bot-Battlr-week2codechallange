@@ -1,0 +1,77 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+/* Styling for the bot collection */
+.bot-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* Styling for the bot cards */
+.bot-card {
+  background-color: #fff;
+  width: 250px;
+  margin: 20px;
+  padding: 20px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: left;
+}
+
+.bot-card button {
+  background-color: red;
+  border: none;
+  border-radius: 20%;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 8px;
+}
+
+.bot-card button:hover {
+  background-color: darkred;
+  cursor: pointer;
+}
+
+.bot-card img {
+  background-color: #ccc;
+  display: block;
+  margin: 0 auto;
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.bot-card h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  text-align: left;
+}
+
+.bot-card p {
+  font-size: 18px;
+  margin-bottom: 10px;
+  max-width: 200px;
+  word-wrap: break-word;
+  text-align: left;
+}
+
+.bot-card span {
+  display: inline-block;
+  margin-right: 10px;
+}
