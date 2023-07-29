@@ -1,70 +1,101 @@
-# Getting Started with Create React App
+# Bot Battlr - React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a mini web app built with React that fetches data from a local server running JSON DB server. The app consists of two main components: `BotCollection` and `YourBotArmy`. In `BotCollection`, you can see profiles of all available bots and add them to your army. In `YourBotArmy`, you can view the bots enlisted in your army and release or discharge them.
 
-## Available Scripts
+## Project Setup
 
-In the project directory, you can run:
+Follow these steps to set up and run the project:
 
-### `npm start`
+1. Clone this repository to your local machine.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+2. Install the required dependencies by running the following command in the project root directory:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+```bash
+npm install
+```
 
-### `npm test`
+3. Start the JSON DB server by running:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```bash
+json-server --watch db.json --port 8001
+```
 
-### `npm run build`
+4. Run the React app by executing:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+npm start
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+This will launch the application in your default web browser, typically at `http://localhost:3000`.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Features
 
-### `npm run eject`
+As a user, you can perform the following actions in the application:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+1. View Profiles: On the main page (`BotCollection`), you can see profiles of all available bots, including their name, health, damage, armor, bot class, catchphrase, and avatar image.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+2. Enlist a Bot: To add a bot to your army, simply click on it in the `BotCollection`. The selected bot will render in the `YourBotArmy` component. Remember, a bot can be enlisted only once.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+3. Release a Bot: If you wish to remove a bot from your army, click on it in the `YourBotArmy` section. The bot will disappear from your army but remain in the `BotCollection`.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+4. Discharge a Bot: To permanently delete a bot from both the backend and your army, click the red button marked "x" on the bot in the `YourBotArmy` component.
 
-## Learn More
+## API Endpoints
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+The application fetches data from the following API endpoints:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### GET /bots
 
-### Code Splitting
+Returns an array of bot objects with the following properties:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- `id`: Bot ID
+- `name`: Bot name
+- `health`: Bot health points
+- `damage`: Bot damage points
+- `armor`: Bot armor points
+- `bot_class`: Bot class (e.g., Support, Medic, etc.)
+- `catchphrase`: Bot's catchphrase
+- `avatar_url`: URL of the bot's avatar image
+- `created_at`: Timestamp of bot creation
+- `updated_at`: Timestamp of last bot update
 
-### Analyzing the Bundle Size
+Example Response:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+```json
+[
+  {
+    "id": 101,
+    "name": "wHz-93",
+    "health": 94,
+    "damage": 20,
+    "armor": 63,
+    "bot_class": "Support",
+    "catchphrase": "1010010101001101100011000111101",
+    "avatar_url": "https://robohash.org/nostrumrepellendustenetur.png?size=300x300&set=set1",
+    "created_at": "2018-10-02T19:55:10.800Z",
+    "updated_at": "2018-10-02T19:55:10.800Z"
+  },
+  {
+    "id": 102,
+    "name": "RyM-66",
+    "health": 86,
+    "damage": 36,
+    "armor": 77,
+    "bot_class": "Medic",
+    "catchphrase": "0110011100000100011110100110011000011001",
+    "avatar_url": "https://robohash.org/quidemconsequaturaut.png?size=300x300&set=set1",
+    "created_at": "2018-10-02T19:55:10.827Z",
+    "updated_at": "2018-10-02T19:55:10.827Z"
+  }
+]
+```
 
-### Making a Progressive Web App
+### DELETE /bots/:id
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Deletes the bot with the specified `id`.
 
-### Advanced Configuration
+Example Response:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```json
+{}
+```
